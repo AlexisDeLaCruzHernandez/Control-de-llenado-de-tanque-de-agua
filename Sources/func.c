@@ -24,20 +24,20 @@ parametros_t f_inicio (void){
     no se va a ejecutar el programa*/
     while(!feof(conf)){
         fgets(cadena,40,conf);
-        datos_i.configuracion=1;
         variable=cadena;
         if((*variable)!='#' && strlen(variable)>=0){
             valor=f_finvariable(variable);
+            aux=atoi(valor); //lo guardamos en un auxiliar para llevarlo al formato que usamos.
+            if(aux<0||aux>7) //verificamos que esten entre los parametros establecidos.
+                return datos_i;
             for(i=0;i<2;i++){
                 if(!strcmp(variable,variables[i])){
                     switch(i){
-                        case 0: aux=atoi(valor);//lo guardamos en un auxiliar para llevarlo al formato que usamos.
-                                for(j=0;j<aux+1;j++)
+                        case 0: for(j=0;j<aux+1;j++)
                                     datos_i.nivel_maximo=datos_i.nivel_maximo+(1<<j);
                                 datos_i.nivel_maximo=~datos_i.nivel_maximo;
                                 break;
-                        case 1: aux=atoi(valor);
-                                for(j=0;j<aux+1;j++)
+                        case 1: for(j=0;j<aux+1;j++)
                                     datos_i.nivel_minimo=datos_i.nivel_minimo+(1<<j);
                                 datos_i.nivel_minimo=~datos_i.nivel_minimo;
                                 break;
@@ -45,6 +45,12 @@ parametros_t f_inicio (void){
                 }
             }
         }
+    }
+    //verificamos que el nivel maximo esta mas arriba que el minimo
+    if (datos_i.nivel_minimo<=datos_i.nivel_maximo)
+        return datos_i;
+    datos_i.configuracion=1;
+    return datos_i;
     }
     return datos_i;
 }
