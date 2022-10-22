@@ -51,8 +51,6 @@ parametros_t f_inicio (void){
         return datos_i;
     datos_i.configuracion=1;
     return datos_i;
-    }
-    return datos_i;
 }
 
 estados_t f_espera (parametros_t datos){
