@@ -78,7 +78,7 @@ unsigned char emulacion (void){
     do{
         scanf("%d",&aux);
         if(aux<0 || aux>7)
-            printf("\Nivel no valido, ingrese entre 0 y 7: ");
+            printf("Nivel no valido, ingrese entre 0 y 7: ");
     }while(aux<0 || aux>7);
     for(i=0;i<aux+1;i++)
         nivel=nivel+(1<<i); //lo transformamos al formato que usamos
