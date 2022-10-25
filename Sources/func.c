@@ -33,11 +33,11 @@ parametros_t f_inicio (void){
             for(i=0;i<2;i++){
                 if(!strcmp(variable,variables[i])){
                     switch(i){
-                        case 0: for(j=0;j<aux+1;j++)
+                        case NIVEL_MAXIMO: for(j=0;j<aux+1;j++)
                                     datos_i.nivel_maximo=datos_i.nivel_maximo+(1<<j);
                                 datos_i.nivel_maximo=~datos_i.nivel_maximo;
                                 break;
-                        case 1: for(j=0;j<aux+1;j++)
+                        case NIVEL_MINIMO: for(j=0;j<aux+1;j++)
                                     datos_i.nivel_minimo=datos_i.nivel_minimo+(1<<j);
                                 datos_i.nivel_minimo=~datos_i.nivel_minimo;
                                 break;
