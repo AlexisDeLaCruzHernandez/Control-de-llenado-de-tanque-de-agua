@@ -2,6 +2,8 @@
 #define DEF_H
 #include <stdio.h>
 #include <string.h>
+#define NIVEL_MAXIMO 0
+#define NIVEL_MINIMO 1
 
 typedef enum{
     espera=0,
